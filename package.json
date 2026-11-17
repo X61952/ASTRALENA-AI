@@ -1,7 +1,7 @@
 {
-  "name": "lexa",
+  "name": "astralena",
   "version": "1.0.0",
-  "description": "Lexa \u2014 a WhatsApp AI agent that chats like a person and works for her owner (web, files, GitHub, website, reminders).",
+  "description": "Astralena — an owner-first WhatsApp AI agent for space technology, full-stack development, research, files, GitHub, websites, and reminders.",
   "type": "module",
   "main": "src/index.js",
   "engines": {

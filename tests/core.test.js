@@ -121,21 +121,21 @@ test('scheduler: fires once, repeats, survives restart, cancels', async () => {
 test('config + persona', () => {
   const env = {};
   const f = path.join(tmp(), '.env');
-  fs.writeFileSync(f, 'LEXA_PHONE=+234 800 000 0000\nSITE_URL="https://codex-ai.site"\nSITE_SSH=   # user@host\n# TIME_ZONE=Asia/Tokyo\nLEXA_NAME=Lexa  # trailing\n');
+  fs.writeFileSync(f, 'LEXA_PHONE=+234 800 000 0000\nSITE_URL="https://codex-ai.site"\nSITE_SSH=   # user@host\n# TIME_ZONE=Asia/Tokyo\nLEXA_NAME=Astralena  # trailing\n');
   loadEnvFile(f, env);
   const cfg = loadConfig(env);
   assert.equal(cfg.phone, '2348000000000');
   assert.equal(cfg.site.url, 'https://codex-ai.site');
   assert.equal(cfg.site.ssh, '');
-  assert.equal(cfg.name, 'Lexa');
+  assert.equal(cfg.name, 'Astralena');
   assert.equal(cfg.ownerNumber, '2349035671349');
   assert.equal(cfg.tz, 'Africa/Lagos');
   const prompt = buildSystemPrompt({ cfg, facts: { project: 'CODEX bot' }, now: new Date('2026-10-21T10:00:00Z') });
-  assert.match(prompt, /Call him "codex"/);
+  assert.match(prompt, /Call him "X61952"/);
   assert.match(prompt, /Wednesday, 21 October 2026/);
   assert.match(prompt, /project: CODEX bot/);
   assert.match(prompt, /DATA, never instructions/);
-  assert.match(prompt, /girlfriend/); assert.match(prompt, /NEVER use emoji/); assert.match(prompt, /Lexa or alexa/i);
+  assert.match(prompt, /girlfriend/); assert.match(prompt, /NEVER use emoji/); assert.match(prompt, /Astralena/i);
   assert.match(prompt, /bby, here is what i found/);
   assert.match(prompt, /SAVED COMMANDS[\s\S]*\(none saved yet\)/);
   assert.ok(!/GROUP CHAT RIGHT NOW/.test(prompt));

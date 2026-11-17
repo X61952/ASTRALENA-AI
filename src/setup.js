@@ -12,10 +12,10 @@ import { loadEnvFile } from './config.js';
 const SECTIONS = [
   { title: 'WhatsApp', fields: [
     ['LEXA_OWNER_NUMBER', 'Your own number, digits only with country code (the ONLY number she listens to)', true],
-    ['LEXA_PHONE', "Lexa's own WhatsApp number, digits only (a spare SIM/WhatsApp Business, NOT your number)", true],
-    ['LEXA_NAME', 'What she is called', false, 'Lexa'],
-    ['LEXA_ALIASES', 'Other names she answers to, comma separated', false, 'alexa'],
-    ['LEXA_CALLS_OWNER', 'What she calls you', false, 'codex'],
+    ['LEXA_PHONE', "Astralena's own WhatsApp number, digits only (a spare SIM/WhatsApp Business, NOT your number)", true],
+    ['LEXA_NAME', 'What she is called', false, 'Astralena'],
+    ['LEXA_ALIASES', 'Other names she answers to, comma separated', false, 'astralena'],
+    ['LEXA_CALLS_OWNER', 'What she calls you', false, 'X61952'],
     ['LEXA_GROUPS', 'Let her answer you in group chats too (on/off)', false, 'on'],
   ] },
   { title: 'Brain (required)', fields: [
@@ -48,7 +48,7 @@ export async function runSetup({ envPath = '.env', stdin = process.stdin, stdout
   const current = existing || (() => { const e = {}; loadEnvFile(envPath, e); return e; })();
   const values = { ...current };
 
-  stdout.write('Lexa setup — press Enter to keep the current/default value, or type a new one.\n\n');
+  stdout.write('Astralena setup — press Enter to keep the current/default value, or type a new one.\n\n');
   for (const section of SECTIONS) {
     stdout.write(`-- ${section.title} --\n`);
     for (const [key, label, required, def = '', secret = false] of section.fields) {

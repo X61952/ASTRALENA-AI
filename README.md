@@ -1,12 +1,12 @@
-# Lexa
+# Astralena
 
 > A private, owner-first WhatsApp AI agent that can chat naturally, use tools, remember context, and ask before it takes consequential actions.
 
-Lexa is a Node.js WhatsApp agent designed to work for one authorized owner. She can hold natural conversations, understand voice notes, browse the web, work with files, assist with code and GitHub, operate an authorized website over SSH, create reminders, and retain useful memory across restarts.
+Astralena is a Node.js WhatsApp agent designed to work for one authorized owner. Her technical focus includes space technology and innovation—spacecraft systems, satellites, propulsion, launch vehicles, robotics, communications, Earth observation, mission design, and orbital mechanics—alongside full-stack development, APIs, databases, cloud systems, cybersecurity, DevOps, automation, and technical research. She can hold natural conversations, understand voice notes, browse the web, work with files, assist with code and GitHub, operate an authorized website over SSH, create reminders, and retain useful memory across restarts.
 
 The project is intentionally safety-oriented: the default autonomy mode is `ask`, sensitive operations require explicit confirmation, credentials are kept out of command environments, and owner-only access is enforced in code.
 
-## What Lexa can do
+## What Astralena can do
 
 | Area | Capabilities |
 | --- | --- |
@@ -19,16 +19,16 @@ The project is intentionally safety-oriented: the default autonomy mode is `ask`
 | Code | JavaScript obfuscation with configurable protection levels |
 | GitHub | Clone repositories, inspect status, commit and push with approval, open pull requests, and create repositories |
 | Websites | Check availability, take screenshots, and run approved SSH commands or uploads |
-| Planning | Persistent reminders and scheduled jobs that Lexa can execute when due |
+| Planning | Persistent reminders and scheduled jobs that Astralena can execute when due |
 | Memory | Conversation history and durable facts stored locally and reused after restarts |
 | Controls | Natural-language `status`, `stop`, `mode ask`, and `mode auto` commands |
 
 ## Safety model
 
-Lexa is built for a private, owner-controlled deployment.
+Astralena is built for a private, owner-controlled deployment.
 
 - Only `LEXA_OWNER_NUMBER` is authorized for direct interaction.
-- In groups, Lexa responds only to the owner and only when called by name, replied to, or tagged.
+- In groups, Astralena responds only to the owner and only when called by name, replied to, or tagged.
 - `ask` is the default autonomy mode. Read-only actions may run immediately; consequential actions request approval.
 - `auto` allows more autonomy, but destructive or high-impact operations still require confirmation.
 - Shell execution, GitHub pushes, website changes, credential-related actions, and destructive commands are guarded.
@@ -39,11 +39,11 @@ Lexa is built for a private, owner-controlled deployment.
 - Commands run with a stripped environment so API keys and tokens are not exposed to subprocesses.
 - `.env`, session data, keys, and other sensitive files are not intended to be read, sent, committed, or uploaded.
 
-Use a separate WhatsApp number for Lexa, preferably a spare SIM or WhatsApp Business account. Do not run an automation agent on your personal WhatsApp number.
+Use a separate WhatsApp number for Astralena, preferably a spare SIM or WhatsApp Business account. Do not run an automation agent on your personal WhatsApp number.
 
 ## Architecture
 
-Lexa starts from `src/index.js` and assembles a small set of focused services:
+Astralena starts from `src/index.js` and assembles a small set of focused services:
 
 ```text
 WhatsApp connection
@@ -80,7 +80,7 @@ Important components include:
 - `poppler-utils` for PDF workflows.
 - `ffmpeg` for audio and video workflows.
 - `openssh-client` for approved website operations.
-- A dedicated WhatsApp number for Lexa.
+- A dedicated WhatsApp number for Astralena.
 - An OpenRouter API key, Groq API key, or both.
 
 Optional providers and integrations are configured through `.env`:
@@ -124,8 +124,8 @@ At minimum, set the WhatsApp identity, owner number, and one supported LLM provi
 ```dotenv
 LEXA_PHONE=2340000000000
 LEXA_OWNER_NUMBER=2340000000000
-LEXA_NAME=Lexa
-LEXA_ALIASES=alexa
+LEXA_NAME=Astralena
+LEXA_ALIASES=aastralena
 LEXA_GROUPS=on
 
 OPENROUTER_API_KEY=your-openrouter-key
@@ -148,12 +148,12 @@ LEXA_DATA_DIR=./data
 
 ### GitHub access
 
-Use a fine-grained token restricted to the repositories Lexa needs. Grant only the permissions required by your workflow, such as repository contents and pull requests.
+Use a fine-grained token restricted to the repositories Astralena needs. Grant only the permissions required by your workflow, such as repository contents and pull requests.
 
 ```dotenv
 GITHUB_TOKEN=your-fine-grained-token
-GIT_USER_NAME=Lexa
-GIT_USER_EMAIL=lexa@example.com
+GIT_USER_NAME=Astralena
+GIT_USER_EMAIL=astralena@example.com
 ```
 
 ### Website access
@@ -163,25 +163,25 @@ Use a dedicated SSH key with the narrowest permissions possible:
 ```dotenv
 SITE_URL=https://example.com
 SITE_SSH=user@example-host
-SITE_SSH_KEY=/absolute/path/to/lexa-site-key
+SITE_SSH_KEY=/absolute/path/to/astralena-site-key
 SITE_ROOT=/var/www/example.com
 ```
 
 ## First run
 
-Start Lexa with:
+Start Astralena with:
 
 ```bash
 npm start
 ```
 
-On the first run, Lexa prints a pairing code. On the WhatsApp number configured in `LEXA_PHONE`:
+On the first run, Astralena prints a pairing code. On the WhatsApp number configured in `LEXA_PHONE`:
 
 1. Open **WhatsApp**.
 2. Open **Linked devices**.
 3. Choose **Link a device**.
 4. Select **Link with phone number instead**.
-5. Enter the pairing code shown by Lexa.
+5. Enter the pairing code shown by Astralena.
 
 After the connection opens, keep the process running. For a long-lived VPS deployment, PM2 can be used:
 
@@ -194,7 +194,7 @@ pm2 startup
 
 ## Everyday controls
 
-Lexa understands both explicit commands and natural phrasing.
+Astralena understands both explicit commands and natural phrasing.
 
 | Intent | Example |
 | --- | --- |
@@ -207,24 +207,24 @@ Lexa understands both explicit commands and natural phrasing.
 | Approve a pending action | `yes` or `confirm` |
 | Reject a pending action | `no` |
 
-Always review the action Lexa describes before approving it. An unanswered approval expires and is treated as rejected.
+Always review the action Astralena describes before approving it. An unanswered approval expires and is treated as rejected.
 
 ## Groups and direct messages
 
-In a group, Lexa only responds to the configured owner and only when one of these conditions is met:
+In a group, Astralena only responds to the configured owner and only when one of these conditions is met:
 
 - The owner calls her by name.
 - The owner replies to one of her messages.
 - The owner tags her.
 
-For larger tasks, Lexa can acknowledge the request in the group, perform the work, send the result or files to the owner's direct message, and mention the owner in the group when the work is complete.
+For larger tasks, Astralena can acknowledge the request in the group, perform the work, send the result or files to the owner's direct message, and mention the owner in the group when the work is complete.
 
 ## Files and media
 
-Lexa can work with files that are sent to her. Reply to a file already available in the conversation with an instruction such as:
+Astralena can work with files that are sent to her. Reply to a file already available in the conversation with an instruction such as:
 
 ```text
-Lexa, read this file and scan it for bugs.
+Astralena, read this file and scan it for bugs.
 ```
 
 For sensitive documents, verify that the file is authorized for processing before sending it to the agent. Keep the local `workspace/`, `data/`, and WhatsApp session directories private.
@@ -268,10 +268,10 @@ The project should contain only public source, documentation, and example config
 
 ## License and responsible use
 
-Review the repository's license before redistributing Lexa. You are responsible for complying with WhatsApp policies, provider terms, privacy laws, and the permissions of any account, repository, website, file, or data that Lexa accesses.
+Review the repository's license before redistributing Astralena. You are responsible for complying with WhatsApp policies, provider terms, privacy laws, and the permissions of any account, repository, website, file, or data that Astralena accesses.
 
-Lexa is an automation tool. Do not use it for spam, harassment, unauthorized access, credential harvesting, surveillance, or actions against systems and accounts you do not control.
+Astralena is an automation tool. Do not use it for spam, harassment, unauthorized access, credential harvesting, surveillance, or actions against systems and accounts you do not control.
 
 ## Project status
 
-Lexa is an actively evolving personal automation agent. WhatsApp protocol behavior, external provider APIs, browser automation, and model tool-calling support can change independently. Test changes in a non-production account first and keep dependencies reviewed and reproducible.
+Astralena is an actively evolving personal automation agent. WhatsApp protocol behavior, external provider APIs, browser automation, and model tool-calling support can change independently. Test changes in a non-production account first and keep dependencies reviewed and reproducible.

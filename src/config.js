@@ -51,9 +51,9 @@ function llmConfig(env) {
 export function loadConfig(env = process.env) {
   const cwd = process.cwd();
   return {
-    name: env.LEXA_NAME || 'Lexa',
-    ownerName: env.LEXA_CALLS_OWNER || 'codex',
-    aliases: String(env.LEXA_ALIASES || 'alexa').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean),
+    name: env.LEXA_NAME || 'Astralena',
+    ownerName: env.LEXA_CALLS_OWNER || 'X61952',
+    aliases: String(env.LEXA_ALIASES || 'astralena').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean),
     allowGroups: !/^(0|false|off|no)$/i.test(String(env.LEXA_GROUPS || 'on')),
     ownerNumber: digits(env.LEXA_OWNER_NUMBER || '2349035671349'),
     phone: digits(env.LEXA_PHONE),
@@ -63,7 +63,7 @@ export function loadConfig(env = process.env) {
     dataDir: path.resolve(cwd, env.LEXA_DATA_DIR || './data'),
     tavilyKey: env.TAVILY_API_KEY || '',
     braveKey: env.BRAVE_API_KEY || '',
-    github: { token: env.GITHUB_TOKEN || '', userName: env.GIT_USER_NAME || 'Lexa', userEmail: env.GIT_USER_EMAIL || 'lexa@users.noreply.github.com' },
+    github: { token: env.GITHUB_TOKEN || '', userName: env.GIT_USER_NAME || 'Astralena', userEmail: env.GIT_USER_EMAIL || 'astralena@users.noreply.github.com' },
     site: { url: env.SITE_URL || '', ssh: env.SITE_SSH || '', key: env.SITE_SSH_KEY || '', root: env.SITE_ROOT || '' },
     stt: sttConfig(env),
     sensitivePin: env.LEXA_SENSITIVE_PIN || '',

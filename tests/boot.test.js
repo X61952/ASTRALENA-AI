@@ -90,7 +90,7 @@ test('boot: real process, fake WhatsApp, fake OpenRouter: a message in, a finish
     assert.match(stdout, /\[lexa\] starting\. brain: openrouter:test\/model\. \d+ tools ready\./);
     assert.match(stdout, /online as 2348111111111\. listening to 2349035671349 only\./);
     assert.equal(seen.length, 2);                                                                                                      // exactly two model calls for the whole task
-    assert.match(seen[0].messages[0].content, /You are Lexa, codex's girlfriend/); assert.ok(seen[0].tools.length >= 45);
+    assert.match(seen[0].messages[0].content, /You are Astralena, X61952's girlfriend and technical partner/); assert.ok(seen[0].tools.length >= 45);
     assert.equal(seen[0].messages.at(-1).content, 'alexa what is 6 times 7, work it out with code');
     assert.ok(!stderr.includes('Error'), stderr);
   } finally { child.kill('SIGKILL'); server.close(); }
